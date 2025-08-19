@@ -54,7 +54,7 @@
         <!-- CASE1. 로그인 전-->
     	<c:choose>   
         	<c:when test="${ empty loginUser }">
-		        <form action="" method="post">
+		        <form action="login.me" method="post">
 		            <table>
 		                <tr>
 		                    <td>아이디</td>
@@ -83,7 +83,7 @@
 		        <table>
 		            <tr>
 		                <td colspan="2">
-		                    <h3> ###님 환영</h3>
+		                    <h3>${ loginUser.userName }님 환영</h3>
 		                </td>
 		            </tr>
 		
@@ -102,7 +102,7 @@
     <div class="nav-area" align="center">
         <div class="menu">HOME</div>
         <div class="menu">공지사항</div>
-        <div class="menu">게시판</div>
+        <div class="menu" onclick="location.href='list.bo?cpage=1'">게시판</div>
         <div class="menu">ETC</div>
 
     </div>

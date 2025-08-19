@@ -14,6 +14,8 @@
 	<!-- 우선 공란 -->
  	<typeAliases>
  		<typeAlias type="com.kh.mybatis.member.model.vo.Member" alias="Member"/>
+ 		<typeAlias type="com.kh.mybatis.board.model.vo.Board" alias="Board"/>
+ 		<typeAlias type="com.kh.mybatis.board.model.vo.Reply" alias="Reply"/>
  	</typeAliases>
  	
  <!-- environment : mybatis에서 연동할 DB정보들을 등록하는 영역 (id와 디폴드 값이 같아야 함) -->
@@ -44,6 +46,7 @@
  	<!-- 우선 공란 -->
  	<mappers>
  		<mapper resource="/mappers/member-mapper.xml"/>
+ 		<mapper resource="/mappers/board-mapper.xml"/>
  	
  	</mappers>
  	

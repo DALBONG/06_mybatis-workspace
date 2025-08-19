@@ -19,7 +19,54 @@
  	 
  	 <!-- mybatis-config의 typealiases에 등록하고 사용해야 함 
  	 	  등록 후, ?를 #{필드명}으로 대체해주기.
- 	 -->
+ 	 ================================================================-->
+  
+ 	 <!-- 
+ 	 	resultMap : 마이바티스의 핵심기능 중 하나. 
+ 	 				ResultSet으로부터 조회된 컬럼 값을 하나씩 뽑아 
+ 	 				내가 지정한 vo객체의 각 필드에 담는(매핑) JDBC코드를 줄여주는 역할 
+ 	 				
+ 	 	<resultMap id="식별자" type="조회결과를 담아 반환하려 하는 vo객체의 타입(풀클래스명 | 별칭)">
+ 	 		<result column="조회 결과를 뽑을 DB컬럼명" property="해당 결과를 담으려는 Java의 필드 명"/>
+ 	 	</resultMap>
+ 	  -->
+ 	 <resultMap id="memberResultSet" type="Member">
+ 	 	<result column="user_no" property="userNo"/>
+ 	 	<result column="user_id" property="userId"/>
+ 	 	<result column="user_pwd" property="userPwd"/>
+ 	 	<result column="user_name" property="userName"/>
+ 	 	<result column="email" property="email"/>
+ 	 	<result column="birthday" property="birthday"/>
+ 	 	<result column="gender" property="gender"/>
+ 	 	<result column="phone" property="phone"/>
+ 	 	<result column="address" property="address"/>
+ 	 	<result column="enroll_date" property="enrollDate"/>
+ 	 	<result column="modify_date" property="modifyDate"/>
+ 	 	<result column="status" property="status"/>
+ 	 </resultMap>
+ 	 
+ 	 <select id="loginMember" resultMap="memberResultSet" parameterType="Member">
+ 	 	select
+		       user_no
+		     , user_id
+		     , user_pwd
+		     , user_name
+		     , email
+		     , birthday
+		     , gender
+		     , phone
+		     , address
+		     , enroll_date
+		     , modify_date
+		     , status
+		  from member
+		 where user_id = #{ userId }
+		   and user_pwd = #{ userPwd }
+		   and status = 'Y'
+ 	 </select>
+ 	 
+ 	 
+ 	 
  	 <insert id="insertMember" parameterType="Member">
  	 insert 
 	  into member
@@ -47,6 +94,5 @@
 	     , #{address}
 	     )
  	 </insert>
- 	 
  	 
 </mapper>
