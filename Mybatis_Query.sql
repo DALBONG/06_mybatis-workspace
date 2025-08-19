@@ -99,4 +99,7 @@ select
  where b.status = 'Y'
    --and user_id like '%' || 'ad' || '%' -- 작성자로 ad 키워드 검색
    --and board_title like '%' || '다' || '%' -- 제목으로 '다' 키워드 검색
-   and board_content like '%' || '안녕' || '%' -- 내용으로 '안녕'키워드 검색 
+   --and board_content like '%' || '안녕' || '%' -- 내용으로 '안녕'키워드 검색 
+    like '%' || 'keyword' || '%'
+   
+   
